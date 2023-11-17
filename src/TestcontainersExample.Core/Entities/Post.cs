@@ -9,9 +9,9 @@ public class Post : IEntity, IDateTrackable
 
     public DateTimeOffset Created { get; set; }
     public DateTimeOffset Modified { get; set; }
-    
-    public string Title { get; set; }
-    public string Body { get; set; }
-    
-    public virtual User User { get; set; }
+
+    public required string Title { get; set; }
+    public required string Body { get; set; }
+
+    public virtual required User User { get; set; }
 }
