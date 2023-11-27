@@ -13,5 +13,5 @@ public class Post : IEntity, IDateTrackable
     public required string Title { get; set; }
     public required string Body { get; set; }
 
-    public virtual required User User { get; set; }
+    public virtual User? User { get; set; } = null;
 }

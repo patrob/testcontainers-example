@@ -1,20 +1,14 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using TestcontainersExample.Core.Common.Interfaces;
+using TestcontainersExample.Core.Entities;
 
 namespace TestcontainersExample.Data;
 
-public class ApplicationDbContext : DbContext, IApplicationDbContext
+public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+    : DbContext(options), IApplicationDbContext
 {
-    private readonly IConfiguration _configuration;
+    public virtual DbSet<Post> Posts { get; set; }
+    public virtual DbSet<User> Users { get; set; }
 
-    public ApplicationDbContext(IConfiguration configuration)
-    {
-        _configuration = configuration;
-    }
-    
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseSqlServer(_configuration.GetConnectionString("Application"));
-    }
 }
