@@ -35,6 +35,8 @@ app.MapControllerRoute(
 
 app.MapFallbackToFile("index.html");
 
+await app.Services.InitializeDatabase();
+
 app.Run();
 
 public abstract partial class Program

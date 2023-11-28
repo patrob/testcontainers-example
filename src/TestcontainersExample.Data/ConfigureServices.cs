@@ -9,7 +9,17 @@ public static class ConfigureServices
 {
     public static void ConfigureDatabase(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("Application")));
+        var connectionString = configuration.GetConnectionString("Application");
+        services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
         services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
+        services.AddScoped<ApplicationDbContext>();
+        services.AddScoped<ContextInitializer>();
+    }
+    
+    public static async Task InitializeDatabase(this IServiceProvider serviceProvider)
+    {
+        var scope = serviceProvider.CreateScope();
+        var contextInitializer = scope.ServiceProvider.GetRequiredService<ContextInitializer>();
+        await contextInitializer.Initialize();
     }
 }
