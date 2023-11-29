@@ -14,9 +14,16 @@ public class PostsController : ApiControllerBase
     }
     
     [HttpGet]
-    public async Task<IActionResult> Get()
+    public async Task<IActionResult> Get([FromQuery] int page = 1, int pageSize = 10, string? sortBy = null, bool isDescending = false)
     {
-        var response = await Mediator.Send(new GetPostsQuery());
+        var response = await Mediator.Send(new GetPostsQuery
+        {
+            PageNumber = page,
+            PageSize = pageSize,
+            ColumnName = sortBy,
+            IsDescending = isDescending
+        });
+        
         return Ok(response);
     }
 }

@@ -1,7 +1,4 @@
-using System.Net.Http.Json;
-using FluentAssertions;
 using TestcontainersExample.Core.Dtos;
-using Xunit.Categories;
 
 namespace TestcontainersExample.IntegrationTests.UserTests;
 
