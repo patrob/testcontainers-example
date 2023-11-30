@@ -7,7 +7,8 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [CommonModule, RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styles: [],
+  providers: []
 })
 export class AppComponent {
   title = 'testcontainers-example';

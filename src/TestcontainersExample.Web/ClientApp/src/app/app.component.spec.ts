@@ -1,28 +1,27 @@
-import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { render } from '@testing-library/angular';
+import {renderRootComponent} from "../testing/testing-render";
+import {TestingComponentRenderResult} from "../testing/testing-render-result";
 
 describe('AppComponent', () => {
-  it('should create the app', async () => {
-    const { fixture } = await setup();
-    const app = fixture.componentInstance;
+  let fixture: TestingComponentRenderResult<AppComponent>;
+
+  beforeEach(async () => {
+    fixture = await renderRootComponent(AppComponent);
+  });
+
+  it('should create the app', () => {
+    const app = fixture.getComponentRef();
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'testcontainers-example' title`, async () => {
-    const { fixture } = await setup();
-    const app = fixture.componentInstance;
+  it(`should have the 'testcontainers-example' title`, () => {
+    const app = fixture.getComponentRef();
     expect(app.title).toEqual('testcontainers-example');
   });
 
-  it('should render title', async () => {
-    const { fixture } = await setup();
+  it('should render title', () => {
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain(
-      'Hello, testcontainers-example',
-    );
+    const compiled = fixture.debugElement.nativeElement as HTMLElement;
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, testcontainers-example');
   });
-
-  const setup = async () => await render(AppComponent, {});
 });

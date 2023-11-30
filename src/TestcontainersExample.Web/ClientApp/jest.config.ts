@@ -1,8 +1,23 @@
-import type { Config } from 'jest';
+import { Config } from 'jest';
 
 const config: Config = {
-  verbose: true,
+  transform: {
+    '<rootDir>/tsconfig.spec.json': ['ts-jest', { isolatedModules: true }],
+  },
+  testPathIgnorePatterns: ['/node_modules/'],
   preset: 'jest-preset-angular',
-  setupFiles: ['<rootDir>/setup-jest.ts'],
+  setupFilesAfterEnv: ['<rootDir>/setup-jest.ts'],
+  coverageReporters: ['cobertura', 'lcov', 'text-summary'],
+  coverageDirectory: 'coverage',
+  coveragePathIgnorePatterns: ['<rootDir>/src/testing', '<rootDir>/node_modules'],
+  coverageThreshold: {
+    global: {
+      branches: 90,
+      functions: 90,
+      lines: 90,
+      statements: 90,
+    },
+  },
 };
+
 export default config;
