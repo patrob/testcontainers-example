@@ -19,4 +19,11 @@ public class UsersController : ApiControllerBase
         await Mediator.Send(command);
         return NoContent();
     }
+    
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetById(Guid id)
+    {
+        var response = await Mediator.Send(new GetUserByIdQuery { Id = id });
+        return Ok(response);
+    }
 }
