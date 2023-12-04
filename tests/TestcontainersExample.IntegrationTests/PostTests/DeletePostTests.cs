@@ -17,7 +17,7 @@ public class DeletePostTests(CustomWebApplicationFactory factory) : BaseTest(fac
         {
             Body = "hello world",
             Title = "Some Cool Title",
-            UserId = TestUserId,
+            UserId = TestUser.Id,
         };
         
         Context.Posts.Add(testPost);

@@ -10,7 +10,7 @@ public class GetUsersTests(CustomWebApplicationFactory factory) : BaseTest(facto
     
     [Fact]
     [IntegrationTest]
-    public async Task ShouldGetUsersDatabase()
+    public async Task ShouldGetUsersInDatabase()
     {
         var response = await Client.GetAsync(_url, _cancellationTokenSource.Token);
         response.EnsureSuccessStatusCode();

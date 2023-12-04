@@ -10,7 +10,7 @@ public class BaseTest : IClassFixture<CustomWebApplicationFactory>
 {
     protected readonly HttpClient Client;
     protected readonly ApplicationDbContext Context;
-    protected Guid TestUserId { get; private set; }
+    protected User TestUser { get; private set; }
 
     private CustomWebApplicationFactory Factory { get; }
 
@@ -39,12 +39,11 @@ public class BaseTest : IClassFixture<CustomWebApplicationFactory>
 
     private async Task SetupTestUser()
     {
-        var user = new User
+        TestUser = new User
         {
             Name = "Patrick Test"
         };
-        Context.Users.Add(user);
+        Context.Users.Add(TestUser);
         await Context.SaveChangesAsync();
-        TestUserId = user.Id;
     }
 }

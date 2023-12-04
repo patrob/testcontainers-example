@@ -12,7 +12,7 @@ public class GetPostsTests(CustomWebApplicationFactory factory) : BaseTest(facto
 
     private async Task AddPostToDatabase(string title, string body)
     {
-        var post = new Post {Title = title, Body = body, UserId = TestUserId};
+        var post = new Post {Title = title, Body = body, UserId = TestUser.Id};
         Context.Posts.Add(post);
         await Context.SaveChangesAsync();
     }

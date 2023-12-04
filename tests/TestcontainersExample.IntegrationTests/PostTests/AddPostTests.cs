@@ -16,7 +16,7 @@ public class AddPostTests(CustomWebApplicationFactory factory) : BaseTest(factor
         {
             Title = "Some Title",
             Body = "Some Body",
-            UserId = TestUserId,
+            UserId = TestUser.Id,
         };
         
         var response = await Client.PostAsJsonAsync(_url, command, _cancellationTokenSource.Token);
