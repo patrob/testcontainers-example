@@ -16,6 +16,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C6E61FD0-B2D7-4617-AA1F-58D19CE4F74E}"
 	ProjectSection(SolutionItems) = preProject
 		docker-compose.yml = docker-compose.yml
+		.github\workflows\dotnet-desktop.yml = .github\workflows\dotnet-desktop.yml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestcontainersExample.CoreTests", "tests\TestcontainersExample.CoreTests\TestcontainersExample.CoreTests.csproj", "{459D35FB-8D28-42DB-B70C-96D9F02A0C6A}"
