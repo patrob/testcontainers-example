@@ -3,6 +3,7 @@ using FluentAssertions;
 using JetBrains.Annotations;
 using TestcontainersExample.Core.Common.Extensions;
 using TestcontainersExample.Core.Entities;
+using Xunit.Categories;
 
 namespace TestcontainersExample.CoreTests.Common.Extensions;
 
@@ -84,6 +85,7 @@ public class SortTestDataGenerator() : BaseTestDataGenerator([
 public class QueryableExtensionsTest
 {
     [Theory]
+    [UnitTest]
     [ClassData(typeof(PageTestDataGenerator))]
     public void Page_ShouldPageData(int[] data, int page, int pageSize, int[] expected)
     {
@@ -98,6 +100,7 @@ public class QueryableExtensionsTest
     }
 
     [Theory]
+    [UnitTest]
     [ClassData(typeof(SortTestDataGenerator))]
     public void Sort_ShouldSortData(Post[] data, string columnName, bool isDescending, Post[] expected)
     {

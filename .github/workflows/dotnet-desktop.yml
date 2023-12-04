@@ -2,9 +2,9 @@ name: ASP.NET Build & Test
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "main" ]
 
 jobs:
 
@@ -25,7 +25,7 @@ jobs:
         dotnet-version: 8.0.x
 
     - name: Execute Unit Tests
-      run: dotnet test --filter TestCategory!=Integration
+      run: dotnet test --filter "Category=UnitTest"
       
     - name: Execute Integration Tests
-      run: dotnet test --filter TestCategory=Integration
+      run: dotnet test --filter "Category=IntegrationTest"
