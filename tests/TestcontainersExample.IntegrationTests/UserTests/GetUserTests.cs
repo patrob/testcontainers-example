@@ -16,6 +16,7 @@ public class GetUserTests(CustomWebApplicationFactory factory) : BaseTest(factor
         response.EnsureSuccessStatusCode();
 
         var user = await response.Content.ReadFromJsonAsync<UserDto>();
-        user!.Should().BeEquivalentTo(TestUser);
+        user!.Id.Should().Be(TestUser.Id);
+        user.Name.Should().Be(TestUser.Name);
     }
 }
