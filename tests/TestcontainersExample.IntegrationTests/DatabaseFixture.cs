@@ -7,22 +7,18 @@ using TestcontainersExample.Data;
 
 namespace TestcontainersExample.IntegrationTests;
 
-public class DatabaseFixture : IAsyncDisposable
+// ReSharper disable once ClassNeverInstantiated.Global
+public class DatabaseFixture : IAsyncLifetime
 {
-    private readonly MsSqlContainer _container;
-    private DbConnection? _connection = null!;
+    private readonly MsSqlContainer _container = new MsSqlBuilder()
+        .WithAutoRemove(true)
+        .Build();
+    
+    private DbConnection? _connection;
     private string _connectionString = null!;
     private Respawner _respawner = null!;
 
-    public DatabaseFixture()
-    {
-        _container = new MsSqlBuilder()
-            .WithAutoRemove(true)
-            .Build();
-        InitialiseAsync().Wait();
-    }
-
-    private async Task InitialiseAsync()
+    public async Task InitializeAsync()
     {
         await _container.StartAsync();
 
@@ -53,7 +49,7 @@ public class DatabaseFixture : IAsyncDisposable
         await _respawner.ResetAsync(_connectionString);
     }
 
-    public async ValueTask DisposeAsync()
+    public async Task DisposeAsync()
     {
         await _connection!.DisposeAsync();
         await _container.DisposeAsync();
@@ -61,6 +57,4 @@ public class DatabaseFixture : IAsyncDisposable
 }
 
 [CollectionDefinition("Storage")]
-public class DatabaseCollection : ICollectionFixture<DatabaseFixture>
-{
-}
+public class DatabaseCollection : ICollectionFixture<DatabaseFixture>;
