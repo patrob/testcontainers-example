@@ -22,6 +22,7 @@ public class GetPostsQueryHandler(IApplicationDbContext context, IMapper mapper)
     public async Task<PagedResult<PostDto>> Handle(GetPostsQuery request, CancellationToken cancellationToken)
     {
         var posts = await context.Posts
+            .Include(x => x.User)
             .Sort(request.ColumnName ?? nameof(Post.Id), request.IsDescending)
             .Page(request.PageNumber, request.PageSize)
             .ToListAsync(cancellationToken);

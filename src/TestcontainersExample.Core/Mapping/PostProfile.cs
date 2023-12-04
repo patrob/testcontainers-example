@@ -13,7 +13,12 @@ public class PostProfile : Profile
         CreateMap<PostDto, Post>()
             .ForMember(x => x.UserId, opt => opt.MapFrom(src => src.User.Id))
             .ForMember(x => x.User, opt => opt.Ignore());
-        CreateMap<Post, PostDto>();
+        CreateMap<Post, PostDto>()
+            .ForMember(x => x.User, opt => opt.MapFrom(src => new UserDto
+            {
+                Id = src.User!.Id,
+                Name = src.User.Name
+            }));
 
     }
 }
