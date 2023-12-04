@@ -21,6 +21,10 @@ public class BaseTest : IClassFixture<CustomWebApplicationFactory>
         {
             AllowAutoRedirect = true,
         });
+        TestUser = new User
+        {
+            Name = "Patrick Test"
+        };
         
         Context = factory.Services.GetService<ApplicationDbContext>()!;
         SetupBaseTestData().Wait();
@@ -39,10 +43,6 @@ public class BaseTest : IClassFixture<CustomWebApplicationFactory>
 
     private async Task SetupTestUser()
     {
-        TestUser = new User
-        {
-            Name = "Patrick Test"
-        };
         Context.Users.Add(TestUser);
         await Context.SaveChangesAsync();
     }
