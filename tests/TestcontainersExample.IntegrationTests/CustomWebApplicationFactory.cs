@@ -9,6 +9,7 @@ using TestcontainersExample.Data;
 namespace TestcontainersExample.IntegrationTests;
 
 [Collection("Storage")]
+// ReSharper disable once ClassNeverInstantiated.Global
 public class CustomWebApplicationFactory(DatabaseFixture databaseFixture) : WebApplicationFactory<Program>
 {
     private readonly DbConnection? _connection = databaseFixture.GetConnection()!;
