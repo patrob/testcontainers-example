@@ -1,4 +1,5 @@
 using System.Linq.Expressions;
+using System.Reflection;
 
 namespace TestcontainersExample.Core.Common.Extensions;
 
@@ -26,9 +27,17 @@ public static class QueryableExtensions
     {
         return typeof(T).GetProperty(columnName)!.PropertyType == typeof(Guid);
     }
+
+    private static string GetColumnName<T>(string columnNameIgnoreCase)
+    {
+        var columnName = typeof(T).GetProperties().Select(p => p.Name)
+            .FirstOrDefault(n => n.Equals(columnNameIgnoreCase, StringComparison.OrdinalIgnoreCase));
+        return columnName ?? columnNameIgnoreCase;
+    }
     
     public static IQueryable<T> Sort<T>(this IQueryable<T> query, string columnName, bool isDescending)
     {
-        return IsGuid<T>(columnName) ? query.Sort<T, Guid>(columnName, isDescending) : query.Sort<T, object>(columnName, isDescending);
+        var sanitizedColumnName = GetColumnName<T>(columnName);
+        return IsGuid<T>(sanitizedColumnName) ? query.Sort<T, Guid>(sanitizedColumnName, isDescending) : query.Sort<T, object>(sanitizedColumnName, isDescending);
     }
 }
