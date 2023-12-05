@@ -27,7 +27,7 @@ public class PostsController : ApiControllerBase
         return Ok(response);
     }
     
-    [HttpDelete("{id}")]
+    [HttpDelete("{id:guid}")]
     public async Task<IActionResult> Delete(Guid id)
     {
         await Mediator.Send(new DeletePostCommand { Id = id });
