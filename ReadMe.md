@@ -1,5 +1,5 @@
 # Testcontainers Example
-## This is a simple example of how to use [Testcontainers](https://www.testcontainers.org/) to test an ASP.NET Core Web API.
+## This is a simple example of how to use [Testcontainers for .NET](https://dotnet.testcontainers.org/) to test an ASP.NET Core Web API.
 
 ### Prerequisites
 - [.NET Core SDK](https://dotnet.microsoft.com/download)
