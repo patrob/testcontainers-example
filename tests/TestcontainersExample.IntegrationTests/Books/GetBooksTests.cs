@@ -17,6 +17,7 @@ public class GetBooksTests : BaseTest
     [Fact]
     public async Task GetAllBooks_ShouldReturnAllBooks()
     {
+        TestBook.Author = TestAuthor;
         Context.Authors.Add(TestAuthor);
         Context.Books.Add(TestBook);
         await Context.SaveChangesAsync();
