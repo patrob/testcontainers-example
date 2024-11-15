@@ -1,14 +1,11 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using TestcontainersExample.Core.Common.Interfaces;
-using TestcontainersExample.Core.Entities;
+using TestcontainersExample.Data.Entities;
 
 namespace TestcontainersExample.Data;
 
 public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-    : DbContext(options), IApplicationDbContext
+    : DbContext(options)
 {
-    public virtual DbSet<Post> Posts { get; set; }
-    public virtual DbSet<User> Users { get; set; }
-
+    public virtual DbSet<Book> Books { get; set; }
+    public virtual DbSet<Author> Authors { get; set; }
 }

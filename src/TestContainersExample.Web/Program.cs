@@ -1,5 +1,5 @@
-using TestcontainersExample.Core;
 using TestcontainersExample.Data;
+using TestContainersExample.Web;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.ConfigureDatabase(builder.Configuration);
-builder.Services.AddApplicationCore();
+builder.Services.AddWebServices();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
@@ -32,8 +32,6 @@ app.UseRouting();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller}/{action=Index}/{id?}");
-
-await app.Services.InitializeDatabase();
 
 app.Run();
 
