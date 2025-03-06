@@ -4,7 +4,6 @@ using TestcontainersExample.Data;
 
 namespace TestcontainersExample.IntegrationTests;
 
-[Collection("Storage")]
 public class BaseTest : IClassFixture<CustomWebApplicationFactory>
 {
     protected readonly HttpClient Client;
