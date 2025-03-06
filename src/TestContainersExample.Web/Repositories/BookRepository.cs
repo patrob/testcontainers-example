@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using TestcontainersExample.Data;
 using TestcontainersExample.Data.Entities;
 
@@ -12,6 +13,6 @@ public class BookRepository(ApplicationDbContext dbContext) : IBookRepository
 {
     public IEnumerable<Book> GetAll()
     {
-        return dbContext.Books;
+        return dbContext.Books.Include(b => b.Author);
     }
 }

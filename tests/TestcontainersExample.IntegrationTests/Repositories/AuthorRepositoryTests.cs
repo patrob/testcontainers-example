@@ -10,7 +10,7 @@ public class AuthorRepositoryTests
 {
     private readonly ApplicationDbContext _dbContext;
     private readonly IAuthorRepository _authorRepository;
-    private readonly Author _testAuthor;
+    private readonly Author? _testAuthor;
 
     public AuthorRepositoryTests(DatabaseFixture databaseFixture)
     {

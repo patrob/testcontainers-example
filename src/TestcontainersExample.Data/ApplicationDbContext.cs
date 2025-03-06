@@ -1,3 +1,4 @@
+using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using TestcontainersExample.Data.Entities;
 
@@ -8,4 +9,10 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
 {
     public virtual DbSet<Book> Books { get; set; }
     public virtual DbSet<Author> Authors { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+    }
 }
