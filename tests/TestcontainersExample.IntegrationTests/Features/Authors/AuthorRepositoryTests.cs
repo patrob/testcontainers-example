@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using TestcontainersExample.Data;
 using TestcontainersExample.Data.Entities;
-using TestContainersExample.Web.Repositories;
+using TestContainersExample.Web.Authors;
 
-namespace TestcontainersExample.IntegrationTests.Repositories;
+namespace TestcontainersExample.IntegrationTests.Features.Authors;
 
 [Collection("Storage")]
 public class AuthorRepositoryTests

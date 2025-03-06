@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using TestcontainersExample.Data.Entities;
-using TestContainersExample.Web.Repositories;
+using TestcontainersExample.Web.Controllers;
 
-namespace TestcontainersExample.Web.Controllers;
+namespace TestContainersExample.Web.Authors;
 
 public class AuthorsController(IAuthorRepository authorRepository) : ApiControllerBase
 {

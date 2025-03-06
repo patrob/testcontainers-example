@@ -1,5 +1,5 @@
 using TestcontainersExample.Data.Entities;
-using TestContainersExample.Web.Dto;
+using TestContainersExample.Web.Books;
 
 namespace TestcontainersExample.IntegrationTests.E2E.Books;
 

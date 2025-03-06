@@ -22,7 +22,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Books\" />
+      <Folder Include="Repositories\" />
     </ItemGroup>
 
 </Project>

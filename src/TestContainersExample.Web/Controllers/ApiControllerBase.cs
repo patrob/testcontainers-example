@@ -5,6 +5,4 @@ namespace TestcontainersExample.Web.Controllers;
 
 [Route("api/[controller]")]
 [ApiExceptionFilter]
-public class ApiControllerBase : Controller
-{
-}
+public class ApiControllerBase : Controller;

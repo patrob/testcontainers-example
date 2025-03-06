@@ -1,9 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using TestcontainersExample.Data.Entities;
-using TestContainersExample.Web.Dto;
-using TestContainersExample.Web.Repositories;
+using TestcontainersExample.Web.Controllers;
 
-namespace TestcontainersExample.Web.Controllers;
+namespace TestContainersExample.Web.Books;
 
 public class BooksController(IBookRepository bookRepository) : ApiControllerBase
 {

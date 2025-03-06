@@ -1,4 +1,4 @@
-namespace TestContainersExample.Web.Dto;
+namespace TestContainersExample.Web.Books;
 
 public class BookDto
 {

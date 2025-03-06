@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using TestcontainersExample.Data;
 using TestcontainersExample.Data.Entities;
 
-namespace TestContainersExample.Web.Repositories;
+namespace TestContainersExample.Web.Books;
 
 public interface IBookRepository
 {
