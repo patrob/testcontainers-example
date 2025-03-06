@@ -10,7 +10,7 @@ public class BookRepositoryTests
 {
     private readonly ApplicationDbContext _dbContext;
     private readonly IBookRepository _bookRepository;
-    private readonly Author? _testAuthor;
+    private readonly Author _testAuthor;
     private readonly Book _testBook;
 
     public BookRepositoryTests(DatabaseFixture databaseFixture)
@@ -22,7 +22,7 @@ public class BookRepositoryTests
         _bookRepository = new BookRepository(_dbContext);
         
         _testAuthor = new Author{Name = "Bilbo Baggins"};
-        _testBook = new Book {Title = "The Hobbit"};
+        _testBook = new Book {Title = "The Hobbit", Author = _testAuthor};
         databaseFixture.ResetAsync().Wait();
     }
     

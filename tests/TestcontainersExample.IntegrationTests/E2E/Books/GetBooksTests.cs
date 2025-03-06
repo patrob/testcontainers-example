@@ -4,11 +4,16 @@ using TestContainersExample.Web.Books;
 namespace TestcontainersExample.IntegrationTests.E2E.Books;
 
 [Collection("Storage")]
-public class GetBooksTests(CustomWebApplicationFactory factory) : BaseTest(factory)
+public class GetBooksTests : BaseTest
 {
-    private readonly Author _testAuthor = new() {Name = "Bilbo Baggins"};
+    private readonly Author _testAuthor = new() { Name = "Bilbo Baggins" };
 
-    private readonly Book _testBook = new() {Title = "The Hobbit"};
+    private readonly Book _testBook;
+
+    public GetBooksTests(CustomWebApplicationFactory factory) : base(factory)
+    {
+        _testBook = new Book { Title = "The Hobbit", Author = _testAuthor };
+    }
 
     [Fact]
     public async Task GetAllBooks_ShouldReturnAllBooks()
